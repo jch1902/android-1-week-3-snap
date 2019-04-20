@@ -50,8 +50,12 @@ public class StoriesAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         //TODO bind the title or the story to the correct view holder
+        if(holder instanceof StoryCardViewHolder){
+            ((StoryCardViewHolder) holder).bind(items.get(position).getStory());
+        }else if(holder instanceof StoriesSectionTitleViewHolder){
+            ((StoriesSectionTitleViewHolder) holder).bind(items.get(position).getTitle());
+        }
     }
-
     @Override
     public int getItemCount() {
         // TODO return the correct item count
