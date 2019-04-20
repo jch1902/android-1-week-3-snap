@@ -52,7 +52,7 @@ public class StoriesFragment extends Fragment {
             }
         });
         //TODO set up the recyclerView with the layoutManager and adapter
-        recyclerView.setLayoutManager(new GridLayoutManager(gridLayoutManager));
+        recyclerView.setLayoutManager(gridLayoutManager);
         adapter.setGridMode(true);
         //TODO add a callback to the adapter that calls the method onStoryClicked when the user clicks on the list item
 
