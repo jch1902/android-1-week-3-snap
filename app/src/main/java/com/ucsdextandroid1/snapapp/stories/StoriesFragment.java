@@ -60,7 +60,7 @@ public class StoriesFragment extends Fragment {
             @Override
             public void onDataFetched(List<Story> data) {
                 //TODO set the data from the DataSource to the adapter
-
+                adapter.setItems(getContext(),data);
             }
         });
 
