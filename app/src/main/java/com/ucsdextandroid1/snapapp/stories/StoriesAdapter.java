@@ -61,7 +61,7 @@ public class StoriesAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         //TODO return the correct view type
-        return 0;
+        return items.get(position).getType();
     }
 
     //TODO add a method that returns the correct span for each item type.
