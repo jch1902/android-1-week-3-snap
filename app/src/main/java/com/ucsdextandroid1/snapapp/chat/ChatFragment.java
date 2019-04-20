@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,6 +52,10 @@ public class ChatFragment extends Fragment {
             public void onChatItemClick(Chat chat) {
                 onItemClick(chat);
             }
+            @Override
+            public void onChatItemLongClick(Chat chat){
+                Toast.makeText(getContext(),"Long Click on" + chat.getFromName(), Toast.LENGTH_LONG).show();
+            }
         });
 
         //TODO add click listener to adapter
@@ -67,6 +72,8 @@ public class ChatFragment extends Fragment {
 
     private void onItemClick(Chat chat) {
         Toast.makeText(getContext(), chat.getFromName(), Toast.LENGTH_SHORT).show();
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(chat.getFromName());
     }
 
 }
