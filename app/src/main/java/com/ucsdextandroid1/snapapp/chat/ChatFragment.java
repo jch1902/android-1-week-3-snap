@@ -46,6 +46,13 @@ public class ChatFragment extends Fragment {
         ChatAdapter adapter = new ChatAdapter();
         recyclerView.setAdapter(adapter);
 
+        adapter.setOnItemClickCallback(new ChatItemViewHolder.ChatClickListener() {
+            @Override
+            public void onChatItemClick(Chat chat) {
+                onItemClick(chat);
+            }
+        });
+
         //TODO add click listener to adapter
 
         DataSources.getInstance().getChatItems(new DataSources.Callback<List<Chat>>() {
