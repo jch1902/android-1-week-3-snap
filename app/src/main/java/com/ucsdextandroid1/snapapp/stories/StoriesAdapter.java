@@ -38,7 +38,7 @@ public class StoriesAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         switch(viewType){
             case StoriesListItem.TYPE_TITLE:
-                return StoryCardViewHolder.inflate(parent);
+                return StoriesSectionTitleViewHolder.inflate(parent);
             case StoriesListItem.TYPE_STORY:
                 return StoryCardViewHolder.inflate(parent);
             default :

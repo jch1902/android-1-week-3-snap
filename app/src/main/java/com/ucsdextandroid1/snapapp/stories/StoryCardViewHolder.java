@@ -35,7 +35,7 @@ public class StoryCardViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         // find all of the views
         imageView = itemView.findViewById(R.id.vsc_image_view);
-        titleView = itemView.findViewById(R.id.vci_title);
+        titleView = itemView.findViewById(R.id.vsc_title);
         subtitleView = itemView.findViewById(R.id.vsc_subtitle);
 
 
