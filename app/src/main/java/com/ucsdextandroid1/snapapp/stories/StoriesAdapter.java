@@ -1,6 +1,7 @@
 package com.ucsdextandroid1.snapapp.stories;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,22 +15,21 @@ import java.util.List;
  * Created by rjaylward on 2019-04-20
  */
 public class StoriesAdapter extends RecyclerView.Adapter {
-    private boolean isGridMode = false;
+
     private List<StoriesListItem> items = new ArrayList<>();
-    public void setGridMode(boolean isGridMode){
-        this.isGridMode = isGridMode;
-        notifyDataSetChanged();
-    }
+
+    private StoryCardViewHolder.StoryCardClickListener listener;
+
     public void setItems(Context context, List<Story> stories) {
         items.clear();
 
-        //TODO add title item, using context.getString(R.string.stories)) to get the title
+        // add title item, using context.getString(R.string.stories)) to get the title
         items.add(new StoriesListItem(context.getString(R.string.stories)));
         //TODO add all of the story items to the list
         for (Story story : stories) {
             items.add(new StoriesListItem(story));
         }
-        //TODO let the adapter know that  the data has changed
+        // let the adapter know that  the data has changed
         notifyDataSetChanged();
     }
 
@@ -68,7 +68,7 @@ public class StoriesAdapter extends RecyclerView.Adapter {
         return items.get(position).getType();
     }
 
-    //TODO add a method that returns the correct span for each item type.
+    // add a method that returns the correct span for each item type.
     public int getSpanSize(int position){
         switch(getItemViewType(position)){
             case StoriesListItem.TYPE_TITLE:
@@ -78,8 +78,11 @@ public class StoriesAdapter extends RecyclerView.Adapter {
         }
         return 0;
     }
-    //TODO add a custom interface called Callback that extends the click listener defined on the StoriesCardViewHolder
 
+    // add a custom interface called Callback that extends the click listener defined on the StoriesCardViewHolder
+    public void StoryCardClickListener(StoryCardViewHolder.StoryCardClickListener listener){
+        this.listener = listener;
+    }
     private class StoriesListItem {
 
         public static final int TYPE_TITLE = 1;

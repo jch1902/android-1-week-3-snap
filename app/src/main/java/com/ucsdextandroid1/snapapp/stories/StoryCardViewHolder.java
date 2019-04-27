@@ -27,20 +27,27 @@ public class StoryCardViewHolder extends RecyclerView.ViewHolder {
     private Story currentStory;
     private StoryCardClickListener listener;
 
-    //TODO add a static method called inflate() that inflates the layout view_story_card
+    // add a static method called inflate() that inflates the layout view_story_card
     public static StoryCardViewHolder inflate(@NonNull ViewGroup parent){
         return new StoryCardViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.view_story_card,parent,false));
     }
     public StoryCardViewHolder(@NonNull View itemView) {
         super(itemView);
-        //TODO find all of the views
+        // find all of the views
         imageView = itemView.findViewById(R.id.vsc_image_view);
         titleView = itemView.findViewById(R.id.vci_title);
         subtitleView = itemView.findViewById(R.id.vsc_subtitle);
 
 
         //TODO add a click listener to the itemView that calls the custom click listener
-        StoryCardClicked();
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listener != null && currentStory != null){
+                    listener.onStoryCardItemClick(currentStory);
+                }
+            }
+        });
     }
 
     public void bind(Story story) {
@@ -55,14 +62,14 @@ public class StoryCardViewHolder extends RecyclerView.ViewHolder {
         titleView.setText(story.getTitle());
         subtitleView.setText(story.getSubtitle());
     }
-    private void StoryCardClicked(){
-
+    private void StoryCardClicked(StoryCardClickListener storyListener){
+        listener = storyListener;
     }
     //TODO add a method to set a StoryCardClickListener to this class
 
     public interface StoryCardClickListener {
         // TODO add a method to be called when the user clicks the card view
-
+        void onStoryCardItemClick(Story story);
     }
 
 }
