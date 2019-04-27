@@ -40,7 +40,9 @@ public class StoriesAdapter extends RecyclerView.Adapter {
             case StoriesListItem.TYPE_TITLE:
                 return StoriesSectionTitleViewHolder.inflate(parent);
             case StoriesListItem.TYPE_STORY:
-                return StoryCardViewHolder.inflate(parent);
+                StoryCardViewHolder viewHolder = StoryCardViewHolder.inflate(parent);
+                viewHolder.setStoryCardClicked(listener);
+                return viewHolder;
             default :
                 throw new IllegalArgumentException("Undefined argument");
         }

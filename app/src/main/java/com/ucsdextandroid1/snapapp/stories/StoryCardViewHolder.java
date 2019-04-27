@@ -62,7 +62,7 @@ public class StoryCardViewHolder extends RecyclerView.ViewHolder {
         titleView.setText(story.getTitle());
         subtitleView.setText(story.getSubtitle());
     }
-    private void StoryCardClicked(StoryCardClickListener storyListener){
+    public void setStoryCardClicked(StoryCardClickListener storyListener){
         listener = storyListener;
     }
     //TODO add a method to set a StoryCardClickListener to this class
