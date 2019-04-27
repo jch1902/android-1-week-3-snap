@@ -72,9 +72,9 @@ public class StoriesAdapter extends RecyclerView.Adapter {
     public int getSpanSize(int position){
         switch(getItemViewType(position)){
             case StoriesListItem.TYPE_TITLE:
-                return 1;
-            case StoriesListItem.TYPE_STORY:
                 return 2;
+            case StoriesListItem.TYPE_STORY:
+                return 1;
         }
         return 0;
     }
